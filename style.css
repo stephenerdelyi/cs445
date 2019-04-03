@@ -1,0 +1,88 @@
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif; }
+
+.container {
+  overflow: auto;
+  max-width: 960px;
+  margin: 0 auto; }
+  .container h1, .container h2, .container h3, .container h4, .container h5, .container h6, .container p {
+    margin: 0; }
+  .container .content {
+    float: left;
+    width: 70%;
+    background-color: #cbf1ff;
+    border-left: 1px solid #91ccdf;
+    border-right: 1px solid #91ccdf;
+    box-sizing: border-box;
+    height: 100%;
+    text-align: center; }
+    .container .content img.fisherman {
+      width: 150px;
+      display: inline-block;
+      margin: 10vh 0; }
+    .container .content h1 {
+      font-size: 38px;
+      color: #40578E;
+      margin-bottom: 4vh; }
+    .container .content p {
+      text-align: justify;
+      width: 60%;
+      margin: 0 auto;
+      color: #4e4e4e; }
+    .container .content form {
+      overflow: auto;
+      width: 66%;
+      display: inline-block; }
+      .container .content form input[type="text"] {
+        height: 45px;
+        font-size: 20px;
+        padding: 16px;
+        width: calc(100% - 63px);
+        float: left;
+        display: block;
+        margin: 0;
+        border-top: 1px solid #91ccdf;
+        border-left: 1px solid #91ccdf;
+        border-right: none;
+        border-bottom: 1px solid #91ccdf;
+        border-top-left-radius: 100px;
+        border-bottom-left-radius: 100px; }
+        .container .content form input[type="text"]:focus {
+          outline: none;
+          border-top: 1px solid #65a5ba;
+          border-left: 1px solid #65a5ba;
+          border-bottom: 1px solid #65a5ba; }
+      .container .content form button[type="submit"] {
+        float: left;
+        display: block;
+        margin: 0;
+        padding: 0;
+        background-color: white;
+        border-top-right-radius: 100px;
+        border-bottom-right-radius: 100px;
+        border-top: 1px solid #91ccdf;
+        border-left: 1px solid #d4d4d4;
+        border-right: 1px solid #91ccdf;
+        border-bottom: 1px solid #91ccdf;
+        box-sizing: border-box;
+        cursor: pointer; }
+        .container .content form button[type="submit"] img {
+          height: 29px;
+          margin: 7px 18px 7px 14px;
+          opacity: .25; }
+          .container .content form button[type="submit"] img:hover {
+            opacity: .45; }
+  .container .sidebar {
+    float: left;
+    width: 30%;
+    border-right: 1px solid #dcdcdc;
+    background-color: #f3f3f3;
+    box-sizing: border-box;
+    height: 100%;
+    padding: 10px; }
+    .container .sidebar .ticker-item {
+      background-color: white;
+      border-radius: 20px;
+      padding: 10px 15px;
+      margin-bottom: 10px; }

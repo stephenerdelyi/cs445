@@ -81,6 +81,9 @@ body {
     box-sizing: border-box;
     height: 100%;
     padding: 10px; }
+    .container .sidebar #phishie-ticker, .container .sidebar #emails-ticker {
+      height: 50%;
+      overflow-y: scroll; }
     .container .sidebar .ticker-item {
       background-color: white;
       border-radius: 20px;

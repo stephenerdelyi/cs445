@@ -1,13 +1,18 @@
 <?php
 	require("db.php");
 	
-	$phishies = DB::query("SELECT * FROM emails ORDER BY id DESC");
+	$emails = DB::query("SELECT * FROM emails ORDER BY id DESC");
 	
-	foreach($phishies as $row) {
+	?>
+	<div class="header"><p>Emails</p></div>
+	<?php
+	
+	foreach($emails as $row) {
 		?>
-			<div class="ticker-item">
-				<?php echo $row["email"]; ?>
-			</div>
+			<a href="javascript:openTestWindow('<?php echo $row["email"]; ?>', 'unr', '<?php echo $row["id"]; ?>');"><div class="ticker-item">
+				<img src="envelope.png"/>
+				<p><?php echo $row["email"]; ?></p>
+			</div></a>
 		<?php
 	}
 ?>

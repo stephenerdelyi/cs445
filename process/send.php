@@ -16,6 +16,7 @@
 	));
 	
 	$emailId = DB::insertId();
+	echo $emailId;
 			
 	$subject = 'Phishie!';
 	$message = 'Here is your phishie link:<br><a target="_blank" href="localhost:8888/cs445/' . $url . '/?emailId=' . $emailId . '">click me</a>';

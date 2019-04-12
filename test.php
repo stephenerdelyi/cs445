@@ -1,13 +1,17 @@
 <?php
-	$email = $_GET["email"];
-	$type = $_GET["type"];
+	include("process/db.php");
+	
+	$emailId = $_GET["emailId"];
 	$url = "";
+	
+	$email = DB::queryOneField('email', "SELECT * FROM emails WHERE id=%s", $emailId);
+	$type = DB::queryOneField('type', "SELECT * FROM emails WHERE id=%s", $emailId);	
 	
 	if($type == "unr") {
 		$url = "unr-sso";
 	}
 	
-	$message = 'Here is your phishie link:<br><a target="_blank" href="localhost:8888/cs445/' . $url . '/?emailId=' . $emailId . '">click me</a>';
+	$message = 'Here is your phishie link:<br><a target="_blank" href="' . $url . '/?emailId=' . $emailId . '">click me</a>';
 
 	echo "Would mail:<br><hr>";
 	echo "Subject: Phishie!<br>";

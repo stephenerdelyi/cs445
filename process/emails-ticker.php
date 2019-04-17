@@ -9,7 +9,7 @@
 	
 	foreach($emails as $row) {
 		?>
-			<a href="javascript:openTestWindow('<?php echo $row["email"]; ?>', 'unr', '<?php echo $row["id"]; ?>');"><div class="ticker-item">
+			<a href="javascript:openTestWindow('<?php echo $row["id"]; ?>');"><div class="ticker-item">
 				<img src="envelope.png"/>
 				<p><?php echo $row["email"]; ?></p>
 			</div></a>

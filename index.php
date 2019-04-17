@@ -15,11 +15,11 @@
 			<div class="content">
 				<img class="fisherman" src="fishing.png"/>
 				<h1>Go Phish</h1>
+				<p class="tagline">A simple, pretty phishing proof of concept.</p>
 				<form>
 					<input id="email-phish" type="text" name="email" placeholder="name@example.com"/>
 					<button id="submit-phish" type="submit"><img src="arrow.png"/></button>
 				</form>
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce dapibus libero vel enim rhoncus, ut dapibus mi condimentum. Cras gravida augue at ligula egestas, non aliquam erat lacinia. Ut gravida maximus tincidunt. Duis vulputate tortor eros, ac volutpat erat luctus sed. Nulla cursus bibendum finibus. Donec vulputate est sed vulputate consequat. Quisque sollicitudin ligula vel tempus blandit. Fusce rhoncus est eros, et imperdiet diam rhoncus sit amet. Integer vel rutrum neque. Maecenas pretium.</p>
 			</div>
 			<div class="sidebar">
 				<div id="phishie-ticker"></div>

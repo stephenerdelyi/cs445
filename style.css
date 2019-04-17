@@ -20,16 +20,19 @@ body {
     .container .content img.fisherman {
       width: 150px;
       display: inline-block;
-      margin: 10vh 0; }
+      margin: 12vh 0; }
     .container .content h1 {
       font-size: 38px;
       color: #40578E;
-      margin-bottom: 4vh; }
+      margin-bottom: 1vh; }
     .container .content p {
       text-align: justify;
       width: 60%;
       margin: 0 auto;
       color: #4e4e4e; }
+      .container .content p.tagline {
+        text-align: center;
+        margin-bottom: 4vh; }
     .container .content form {
       overflow: auto;
       width: 66%;

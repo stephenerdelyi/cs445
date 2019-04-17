@@ -25,13 +25,13 @@ body {
 		img.fisherman {
 			width: 150px;
 			display: inline-block;
-			margin: 10vh 0;
+			margin: 12vh 0;
 		}
 		
 		h1 {
 			font-size: 38px;
 			color: #40578E;
-			margin-bottom: 4vh;
+			margin-bottom: 1vh;
 		}
 		
 		p {
@@ -39,6 +39,11 @@ body {
 			width: 60%;
 			margin: 0 auto;
 			color: #4e4e4e;
+			
+			&.tagline {
+				text-align: center;
+				margin-bottom: 4vh;
+			}
 		}
 		
 		form {

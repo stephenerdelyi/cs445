@@ -173,6 +173,9 @@
 			}).then((value) => {
 				if(value == "open") {
 					openTestWindow(emailId);
+					setTimeout(function() {
+						swal.stopLoading();
+					}, 3000);
 				}
 			});
 		}
